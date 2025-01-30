@@ -5,7 +5,7 @@ Tento repozitář obsahuje Python skript pro automatizované plánování (sched
 Skript:
 
 1. Načte konfiguraci z `config.yaml` (URL a přihlašovací údaje k Infobloxu).
-2. Vyhledá všechny síťové objekty, které mají extensible atribut `Net_Discovery=True`.
+2. Vyhledá všechny objekty typu network, které mají extensible atribut `Net_Discovery=True`.
 3. Aktualizuje tzv. **scheduled discovery task** v Infobloxu těmito sítěmi.
 4. Volitelně může spustit plánované discovery a zkontrolovat jeho stav.
 5. Zapisuje průběh a chyby do souboru `discovery.log`.
@@ -21,7 +21,7 @@ Skript:
 1. Naklonujte (nebo stáhněte) tento repozitář:
 
     ```bash
-    git clone https://github.com/uzivatel/nova-infoblox-discovery-scheduler.git
+    git clone https://github.com/AlteproSolutions/nova-infoblox-discovery-scheduler.git
     cd nova-infoblox-discovery-scheduler
     ```
 
