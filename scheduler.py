@@ -99,9 +99,6 @@ def get_discovery_enabled_networks():
 
 def update_scheduled_discovery_task(task_ref, network_refs,
                                     mode="ICMP", ping_retries=5, ping_timeout=1500):
-    """
-    PUT updated network list into the scheduled discovery task.
-    """
     url = f"{BASE_URL}/{task_ref}"
     headers = {"Content-Type": "application/json"}
     payload = {
@@ -112,7 +109,7 @@ def update_scheduled_discovery_task(task_ref, network_refs,
         "ping_timeout": ping_timeout
     }
 
-    logging.info("Updating scheduled discovery '%s' with %d networks.", task_ref, len(network_refs))
+    logging.info("Overwriting scheduled discovery '%s' with %d networks.", task_ref, len(network_refs))
     try:
         resp = requests.put(
             url,
@@ -122,11 +119,10 @@ def update_scheduled_discovery_task(task_ref, network_refs,
             verify=VERIFY_SSL
         )
         resp.raise_for_status()
+        logging.info("Scheduled discovery updated successfully. HTTP code: %d", resp.status_code)
     except requests.exceptions.RequestException as e:
-        logging.error("Error updating scheduled discovery task: %s", e, exc_info=True)
+        logging.error("Error updating scheduled discovery with new networks: %s", e, exc_info=True)
         return
-
-    logging.info("Scheduled discovery updated successfully. Infoblox response code: %d", resp.status_code)
 
 def start_scheduled_discovery_task(task_ref):
     """
