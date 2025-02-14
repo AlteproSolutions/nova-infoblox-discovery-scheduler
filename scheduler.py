@@ -103,7 +103,7 @@ def update_scheduled_discovery_task(task_ref, network_refs,
     headers = {"Content-Type": "application/json"}
     payload = {
         "mode": mode,
-        "network_view": "default",
+        "network_view": "GLOBAL",
         "networks": network_refs,
         "ping_retries": ping_retries,
         "ping_timeout": ping_timeout
