@@ -107,10 +107,7 @@ def update_scheduled_discovery_task(task_ref, network_refs,
         "networks": network_refs,
         "ping_retries": ping_retries,
         "ping_timeout": ping_timeout
-    }
-    print(headers)
-    print(payload)
-    
+    }    
     
     logging.info("Overwriting scheduled discovery '%s' with %d networks.", task_ref, len(network_refs))
     try:
