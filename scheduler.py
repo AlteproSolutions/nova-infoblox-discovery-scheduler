@@ -74,9 +74,9 @@ def get_scheduled_discovery_ref():
 
 def get_discovery_enabled_networks():
     """
-    Returns a list of network references that have Net_Discovery == 'True'.
+    Returns a list of network references that have Network_Discovery == 'True'.
     """
-    url = f"{BASE_URL}/network?_return_fields=network,extattrs&_return_as_object=1"
+    url = f"{BASE_URL}/network?_return_fields=network,extattrs&_return_as_object=1&_max_results=1000000"
 
     try:
         resp = requests.get(url, auth=(USERNAME, PASSWORD), verify=VERIFY_SSL)
@@ -91,10 +91,10 @@ def get_discovery_enabled_networks():
     results = []
     for net_obj in networks:
         extattrs = net_obj.get("extattrs", {})
-        if extattrs.get("Net_Discovery", {}).get("value") == "True":
+        if extattrs.get("Network_Discovery", {}).get("value") == "True":
             results.append(net_obj["_ref"])
 
-    logging.info("Found %d networks with Net_Discovery=True", len(results))
+    logging.info("Found %d networks with Network_Discovery=True", len(results))
     return results
 
 def update_scheduled_discovery_task(task_ref, network_refs,
