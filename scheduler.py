@@ -108,7 +108,10 @@ def update_scheduled_discovery_task(task_ref, network_refs,
         "ping_retries": ping_retries,
         "ping_timeout": ping_timeout
     }
-
+    print(headers)
+    print(payload)
+    
+    
     logging.info("Overwriting scheduled discovery '%s' with %d networks.", task_ref, len(network_refs))
     try:
         resp = requests.put(
@@ -120,8 +123,10 @@ def update_scheduled_discovery_task(task_ref, network_refs,
         )
         resp.raise_for_status()
         logging.info("Scheduled discovery updated successfully. HTTP code: %d", resp.status_code)
+        
     except requests.exceptions.RequestException as e:
         logging.error("Error updating scheduled discovery with new networks: %s", e, exc_info=True)
+        
         return
 
 def start_scheduled_discovery_task(task_ref):
