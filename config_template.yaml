@@ -1,3 +1,10 @@
 INFOBLOX_API_URL: "https://10.40.0.46"
 INFOBLOX_API_USERNAME: ""
 INFOBLOX_API_PASSWORD: ""
+
+# The network view where your networks exist, e.g. "GLOBAL" or "default ..."
+SCHEDULED_DISCOVERY_NETWORK_VIEW: "default"
+
+# The fallback IP/CIDR network used if no 'Network_Discovery=True' networks are found
+# Must be a valid CIDR, e.g. "10.14.20.0/24"
+SCHEDULED_DISCOVERY_DEFAULT_NETWORK: "192.168.0.0/24"
