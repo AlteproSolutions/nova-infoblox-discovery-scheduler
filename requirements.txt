@@ -1,7 +1,4 @@
 certifi==2024.12.14
-charset-normalizer==3.4.1
-idna==3.10
-Pygments==2.19.1
 PyYAML==6.0.2
 requests==2.32.3
 rich==13.9.4
